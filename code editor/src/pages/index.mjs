@@ -1,0 +1,10 @@
+export { default as Home } from "./Home";
+export { default as Editor } from "./Editor";
+export { default as Instructor } from "./Instructor";
+export { default as TaskCreate } from "./TaskCreate";
+export { default as QuizzCreate } from "./QuizzCreate";
+export { default as Quizzes } from "./Quizzes";
+export { default as Quizz } from "./Quizz";
+export { default as Assigments } from "./Assigments";
+export { default as Assigment } from "./Assigment";
+export { default as Task } from "./Task";
