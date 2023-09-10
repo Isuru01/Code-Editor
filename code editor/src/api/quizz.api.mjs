@@ -22,4 +22,12 @@ const fetchQuizz = async ({ queryKey }) => {
   return result.data;
 };
 
-export { updateQuizz, fetchQuizzes, fetchQuizz };
+const deleteQuizz = async (assigment) => {
+  const result = await AxiosInstance().delete("/quizz", {
+    data: assigment,
+    withCredentials: true,
+  });
+  return result.data;
+};
+
+export { updateQuizz, fetchQuizzes, deleteQuizz, fetchQuizz };

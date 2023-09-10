@@ -33,9 +33,12 @@ const fetchAssigment = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const assigment = await Assigment.findOne({
-      key: id,
-    });
+    const assigment = await Assigment.findOne(
+      {
+        key: id,
+      },
+      { _id: 0 }
+    );
 
     let tasks = [];
 
@@ -56,4 +59,23 @@ const fetchAssigment = async (req, res, next) => {
   }
 };
 
-export { updateAssigment, fetchAssigment, fetchAllAssigment };
+const deleteAssigment = async (req, res, next) => {
+  const { qid } = req.body;
+
+  console.log(qid);
+
+  try {
+    const assigment = await Assigment.findOneAndDelete({ key: qid });
+
+    console.log(assigment);
+    if (assigment) {
+      res.status(200).json({ message: "Assigment deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Assigment not found" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { updateAssigment, fetchAssigment, fetchAllAssigment, deleteAssigment };

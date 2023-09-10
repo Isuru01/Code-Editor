@@ -24,7 +24,7 @@ const QuizzCard = ({ quizz }) => {
   };
 
   return (
-    <Card sx={{ minWidth: 400, maxWidth: 500, p: 2 }}>
+    <Card sx={{ minWidth: 400, maxWidth: 500, p: 2, mb: 2 }}>
       <Typography gutterBottom variant="h5" component="div">
         {title}
       </Typography>

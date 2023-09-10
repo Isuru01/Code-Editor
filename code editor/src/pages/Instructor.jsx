@@ -15,13 +15,11 @@ const Instructor = () => {
     <Box>
       {type === "overview" &&
         (action === "undefined" || action === undefined) && <Overview />}
-
-      {type === "assigment" && action === "create" && (
+      {type === "assigment" && (action === "create" || action === "update") && (
         <CreateAssigmentProvider>
           <AssigmentCreate />
         </CreateAssigmentProvider>
       )}
-
       {type === "quizz" && action === "create" && (
         <CreateQuizzProvider>
           <QuizzCreate />

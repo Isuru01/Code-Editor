@@ -33,9 +33,19 @@ const Task = () => {
 
   return (
     <Box>
-      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-        <Box sx={{ width: 700 }}>
-          <Typography variant="h6"></Typography>
+      <Box
+        sx={{
+          display: "grid",
+          bgcolor: "#FFFFFF",
+          p: 2,
+          gap: 2,
+          gridTemplateColumns: "repeat(2, 1fr)",
+        }}
+      >
+        <Box sx={{ width: 700, borderRight: "2px solid black", pr: 1 }}>
+          <Typography variant="h6" color="text.secondary">
+            {task.task}
+          </Typography>
 
           <Box dangerouslySetInnerHTML={{ __html: task.instruction }} />
           <CloudinaryUploadWidget handleChange={setTask} />

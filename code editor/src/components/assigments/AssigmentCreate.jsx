@@ -36,7 +36,7 @@ const AssigmentCreate = () => {
   };
 
   return (
-    <Container>
+    <Container sx={{ bgcolor: "#FFFFFF", p: 2 }}>
       <Box>
         <Stepper sx={{ mb: 4 }} activeStep={activeStep}>
           {steps.map((label) => (

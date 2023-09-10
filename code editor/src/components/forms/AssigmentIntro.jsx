@@ -3,10 +3,33 @@ import { Box, TextField, Autocomplete, Stack, Button } from "@mui/material";
 import DurationPicker from "../date/DurationPicker";
 import { AssigmentContext } from "../../context/CreateAssigmentProvider";
 import AssigmentTime from "./AssigmentTime";
+
 import SaveAssigment from "../btn/SaveAssigment";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAssigment } from "../../api/assigment.api.mjs";
+import { useParams, useLocation } from "react-router-dom";
+import Loader from "../util/Loader";
 
 const AssigmentIntro = () => {
+  //query params
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const aid = queryParams.get("aid");
+
   const { assigment, setAssigment, submit } = useContext(AssigmentContext);
+
+  const { isLoading, data } = useQuery({
+    queryFn: fetchAssigment,
+    queryKey: ["assigment", aid],
+    onSuccess: (data) => {
+      setAssigment(data._doc);
+    },
+    onError: () => {},
+  });
+
+  if (isLoading) return <Loader />;
+
+  console.log(data._doc);
 
   const handleChange = (name, value) => {
     setAssigment((prev) => ({

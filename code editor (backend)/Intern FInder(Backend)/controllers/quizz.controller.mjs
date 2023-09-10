@@ -44,4 +44,20 @@ const fetchQuizz = async (req, res, next) => {
   }
 };
 
-export { updateQuizz, fetchQuizzes, fetchQuizz };
+const deleteQuizz = async (req, res, next) => {
+  const { qid } = req.body;
+
+  try {
+    const quizz = await Quizz.findOneAndDelete({ key: qid });
+
+    if (quizz) {
+      res.status(200).json({ message: "Quizz deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Quizz not found" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { updateQuizz, fetchQuizzes, fetchQuizz, deleteQuizz };
